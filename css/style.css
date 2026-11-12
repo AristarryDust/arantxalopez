@@ -5,7 +5,6 @@
     --color-secondary: #f1c0e8;
 }
 
-
 /* =========================
    CONFIGURACIÓN GENERAL
 ========================= */
@@ -16,12 +15,15 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: var(--color-background);
     color: var(--color-text);
     font-family: Arial, sans-serif;
 }
-
 
 /* =========================
    NAVEGACIÓN
@@ -32,33 +34,39 @@ header {
 }
 
 .navbar {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
+    width: 100%;
 }
 
-/* Logo */
-
 .logo {
+    justify-self: start;
     color: var(--color-primary);
     text-decoration: none;
     font-size: 1.4rem;
     font-weight: bold;
 }
 
-/* Enlaces */
+.nav-center {
+    justify-self: center;
+}
 
 .nav-links {
     display: flex;
     align-items: center;
+    justify-content: center;
     list-style: none;
-    gap: 35px;
+    gap: 28px;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links a {
     text-decoration: none;
     color: var(--color-text);
     font-size: 15px;
+    white-space: nowrap;
     transition: color 0.3s ease;
 }
 
@@ -66,6 +74,47 @@ header {
     color: var(--color-primary);
 }
 
+.nav-actions {
+    justify-self: end;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-instagram {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.nav-instagram svg {
+    display: block;
+    width: 22px;
+    height: 22px;
+}
+
+.nav-instagram:hover {
+    color: var(--color-text);
+}
+
+.nav-appointment {
+    background-color: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    padding: 11px 22px;
+    border-radius: 30px;
+    font-size: 14px;
+    white-space: nowrap;
+    transition: all 0.3s ease;
+}
+
+.nav-appointment:hover {
+    background-color: var(--color-text);
+    transform: translateY(-2px);
+}
 
 /* =========================
    PORTADA
@@ -81,6 +130,13 @@ header {
     padding: 40px 20px;
 }
 
+.hero-label {
+    color: var(--color-primary);
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
 .hero h1 {
     font-size: clamp(2rem, 5vw, 3.5rem);
     margin-bottom: 20px;
@@ -89,49 +145,7 @@ header {
 .hero p {
     font-size: 1.1rem;
     line-height: 1.7;
-}
-
-
-/* =========================
-   PIE DE PÁGINA
-========================= */
-
-footer {
-    padding: 24px;
-    text-align: center;
-    background-color: var(--color-secondary);
-}
-
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media (max-width: 800px) {
-
-    .navbar {
-        flex-direction: column;
-        gap: 20px;
-    }
-
-    .nav-links {
-        gap: 18px;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .nav-appointment {
-        margin-left: 0;
-    }
-
-
-
-}
-.hero-label {
-    color: var(--color-primary);
-    font-size: 2.2rem;
-    letter-spacing: 2px;
-    margin-bottom: 20px;
+    max-width: 650px;
 }
 
 .hero-actions {
@@ -159,19 +173,253 @@ footer {
     font-size: 0.85rem;
     color: var(--color-primary);
 }
-.nav-appointment {
-    background-color: var(--color-primary);
-    color: white;
-    text-decoration: none;
-    padding: 11px 22px;
-    border-radius: 30px;
-    font-size: 14px;
-    white-space: nowrap;
-    margin-left: 25px;
-    transition: all 0.3s ease;
+
+/* =========================
+   PREVIEWS Y TRANSICIONES
+========================= */
+
+/* Versión inicial: contenido normal si
+   JavaScript no está disponible. */
+
+.preview-stage {
+    padding: 80px 8%;
 }
 
-.nav-appointment:hover {
-    background-color: var(--color-text);
-    transform: translateY(-2px);
+.preview-pin {
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+
+.preview-card {
+    max-width: 650px;
+    width: 100%;
+    padding: 40px 0;
+}
+
+.preview-left {
+    align-self: flex-start;
+    text-align: left;
+}
+
+.preview-right {
+    align-self: flex-end;
+    text-align: right;
+}
+
+.preview-label {
+    display: block;
+    color: var(--color-primary);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 22px;
+}
+
+.preview-card h2 {
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: normal;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.preview-card p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    max-width: 520px;
+    margin-bottom: 24px;
+}
+
+.preview-right p {
+    margin-left: auto;
+}
+
+.preview-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: gap 0.3s ease, color 0.3s ease;
+}
+
+.preview-link:hover {
+    gap: 15px;
+    color: var(--color-text);
+}
+
+/* Activación del recorrido animado */
+
+.preview-stage.is-enhanced {
+    height: 400svh;
+    padding: 0;
+    position: relative;
+}
+
+.preview-stage.is-enhanced .preview-pin {
+    position: sticky;
+    top: 0;
+    height: 100svh;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+}
+
+.preview-stage.is-enhanced .preview-card {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8% 12%;
+    max-width: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    will-change: opacity, transform;
+}
+
+.preview-stage.is-enhanced .preview-card.is-active {
+    visibility: visible;
+    pointer-events: auto;
+}
+
+.preview-stage.is-enhanced .preview-left {
+    align-items: flex-start;
+    text-align: left;
+}
+
+.preview-stage.is-enhanced .preview-right {
+    align-items: flex-end;
+    text-align: right;
+}
+
+.preview-stage.is-enhanced .preview-card p {
+    max-width: 540px;
+}
+
+.preview-stage.is-enhanced .preview-right p {
+    margin-left: 0;
+}
+
+/* =========================
+   PIE DE PÁGINA
+========================= */
+
+footer {
+    padding: 30px 8%;
+    text-align: center;
+    background-color: var(--color-secondary);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+footer p {
+    color: var(--color-text);
+    font-size: 0.9rem;
+}
+
+footer a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--color-text);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+    .navbar {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        gap: 20px;
+    }
+
+    .logo,
+    .nav-center,
+    .nav-actions {
+        justify-self: center;
+    }
+
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 18px;
+    }
+
+    .preview-stage.is-enhanced .preview-card {
+        padding: 8%;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav-links {
+        gap: 14px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    .hero-label {
+        font-size: 1.5rem;
+    }
+
+    .preview-stage {
+        padding: 50px 8%;
+    }
+
+    .preview-stage.is-enhanced .preview-card {
+        padding: 9%;
+    }
+
+    .preview-card h2 {
+        font-size: 2rem;
+    }
+
+    .preview-card p {
+        font-size: 0.95rem;
+    }
+}
+
+/* =========================
+   ACCESIBILIDAD
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .preview-stage.is-enhanced {
+        height: auto;
+    }
+
+    .preview-stage.is-enhanced .preview-pin {
+        position: relative;
+        height: auto;
+        overflow: visible;
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+    }
+
+    .preview-stage.is-enhanced .preview-card {
+        position: relative;
+        inset: auto;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        pointer-events: auto;
+        padding: 35px 0;
+    }
 }

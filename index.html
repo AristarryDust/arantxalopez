@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,71 +10,200 @@
     <title>Arantxa López | Psicología</title>
 
     <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
 <body>
 
-   
-<header>
-    <nav class="navbar">
+    <header>
+        <nav class="navbar">
 
-        <a href="../index.html" class="logo">
-            arantxalopez
-        </a>
+            <a href="index.html" class="logo">arantxalopez</a>
 
-        <ul class="nav-links">
-            <li><a href="../index.html">Inicio</a></li>
-            <li><a href="quien-soy.html">Quién soy</a></li>
-            <li><a href="servicios.html">Servicios</a></li>
-            <li><a href="aranceles.html">Aranceles</a></li>
-            <li><a href="contacto.html">Contacto</a></li>
-        </ul>
+            <div class="nav-center">
+                <ul class="nav-links">
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="pages/quien-soy.html">Quién soy</a></li>
+                    <li><a href="pages/servicios.html">Servicios</a></li>
+                    <li><a href="pages/aranceles.html">Aranceles</a></li>
+                    <li><a href="pages/contacto.html">Contacto</a></li>
+                </ul>
+            </div>
 
-        <a href="https://forms.gle/jE9WLeCRXMZSeWN38"
-           class="nav-appointment"
-           target="_blank"
-           rel="noopener noreferrer">
-            Agendar hora
-        </a>
+            <div class="nav-actions">
 
-    </nav>
-</header>
-</header>
+                <a href="https://www.instagram.com/psi.arantxalopez/"
+                   class="nav-instagram"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   aria-label="Visitar Instagram">
+
+                    <svg xmlns="http://www.w3.org/2000/svg"
+                         width="22" height="22"
+                         viewBox="0 0 24 24"
+                         fill="none"
+                         stroke="currentColor"
+                         stroke-width="2"
+                         stroke-linecap="round"
+                         stroke-linejoin="round"
+                         aria-hidden="true">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <circle cx="12" cy="12" r="4"></circle>
+                        <circle cx="18" cy="6" r="1" fill="currentColor" stroke="none"></circle>
+                    </svg>
+
+                </a>
+
+                <a href="https://forms.gle/jE9WLeCRXMZSeWN38"
+                   class="nav-appointment"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Agendar hora
+                </a>
+
+            </div>
+
+        </nav>
+    </header>
 
     <main>
+
+        <!-- PORTADA: se conserva el hero original -->
+
         <section class="hero">
 
-    <span class="hero-label">PSICOLOGÍA · ARANTXA LÓPEZ</span>
+            <span class="hero-label">
+                PSICOLOGÍA · ARANTXA LÓPEZ
+            </span>
 
-    <h1>Un espacio para comprenderte.</h1>
+            <h1>Un espacio para comprenderte.</h1>
 
-    <p>
-        Este es un espacio de escucha, acompañamiento
-        y comprensión. Un lugar donde tu historia
-        puede ser recibida con respeto.
-    </p>
+            <p>
+                Este es un espacio de escucha, acompañamiento
+                y comprensión. Un lugar donde tu historia
+                puede ser recibida con respeto.
+            </p>
 
-    <div class="hero-actions">
-        <a href="https://forms.gle/jE9WLeCRXMZSeWN38"
-   class="btn-primary"
-   target="_blank"
-   rel="noopener noreferrer">
-    Agendar una hora
-</a>
-    </div>
+            <div class="hero-actions">
 
-    <span class="hero-note">
-        Atención psicológica online y presencial
-    </span>
+                <a href="https://forms.gle/jE9WLeCRXMZSeWN38"
+                   class="btn-primary"
+                   target="_blank"
+                   rel="noopener noreferrer">
 
-</section>
+                    Agendar una hora
+
+                </a>
+
+            </div>
+
+            <span class="hero-note">
+                Atención psicológica online y presencial
+            </span>
+
+        </section>
+
+
+        <!-- PREVIEWS: recorrido mediante scroll -->
+
+        <section class="preview-stage" aria-label="Conoce este espacio">
+
+            <div class="preview-pin">
+
+                <article class="preview-card preview-left">
+                    <span class="preview-label">01 · QUIÉN SOY</span>
+
+                    <h2>Detrás de este espacio.</h2>
+
+                    <p>
+                        Soy Arantxa López, psicóloga con formación
+                        especializada en el acompañamiento del duelo
+                        y otros procesos psicológicos.
+                    </p>
+
+                    <a href="pages/quien-soy.html" class="preview-link">
+                        Conoce más sobre mí
+                        <span aria-hidden="true">↗</span>
+                    </a>
+                </article>
+
+
+                <article class="preview-card preview-right">
+                    <span class="preview-label">02 · SERVICIOS</span>
+
+                    <h2>¿En qué puedo acompañarte?</h2>
+
+                    <p>
+                        Conoce los servicios de atención psicológica,
+                        las modalidades de acompañamiento y las
+                        evaluaciones que realizo.
+                    </p>
+
+                    <a href="pages/servicios.html" class="preview-link">
+                        Explora los servicios
+                        <span aria-hidden="true">↗</span>
+                    </a>
+                </article>
+
+
+                <article class="preview-card preview-left">
+                    <span class="preview-label">03 · ARANCELES</span>
+
+                    <h2>Información para comenzar.</h2>
+
+                    <p>
+                        Encuentra los valores, modalidades de atención
+                        y otros detalles prácticos antes de iniciar
+                        un proceso.
+                    </p>
+
+                    <a href="pages/aranceles.html" class="preview-link">
+                        Consulta los aranceles
+                        <span aria-hidden="true">↗</span>
+                    </a>
+                </article>
+
+
+                <article class="preview-card preview-right">
+                    <span class="preview-label">04 · CONTACTO</span>
+
+                    <h2>¿Comenzamos?</h2>
+
+                    <p>
+                        Si este espacio resuena contigo, puedes
+                        encontrar aquí la información necesaria
+                        para dar el primer paso.
+                    </p>
+
+                    <a href="pages/contacto.html" class="preview-link">
+                        Ponte en contacto
+                        <span aria-hidden="true">↗</span>
+                    </a>
+                </article>
+
+            </div>
+
+        </section>
+
     </main>
 
+
     <footer>
+
         <p>&copy; 2026 arantxalopez</p>
+
+        <a href="https://www.instagram.com/psi.arantxalopez/"
+           target="_blank"
+           rel="noopener noreferrer">
+
+            Instagram · @psi.arantxalopez
+
+        </a>
+
     </footer>
 
     <script src="js/script.js"></script>
-   
+
 </body>
 </html>
