@@ -1,3 +1,4 @@
+console.log("¡SCRIPT.JS ESTÁ CONECTADO!");
 document.addEventListener("DOMContentLoaded", () => {
 
     const stage = document.querySelector(".preview-stage");
