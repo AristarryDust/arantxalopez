@@ -1,9 +1,14 @@
 :root {
-    --color-background: #F8F6F0;
-    --color-primary: #748B78;
-    --color-text: #353B35;
-    --color-secondary: #DCE3D8;
+    --color-background: #fae9f7;
+    --color-primary: #9b5480;
+    --color-text: #362c34;
+    --color-secondary: #f1c0e8;
 }
+
+
+/* =========================
+   CONFIGURACIÓN GENERAL
+========================= */
 
 * {
     margin: 0;
@@ -17,9 +22,22 @@ body {
     font-family: Arial, sans-serif;
 }
 
+
+/* =========================
+   NAVEGACIÓN
+========================= */
+
 header {
     padding: 24px 8%;
 }
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo */
 
 .logo {
     color: var(--color-primary);
@@ -27,6 +45,31 @@ header {
     font-size: 1.4rem;
     font-weight: bold;
 }
+
+/* Enlaces */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 35px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--color-text);
+    font-size: 15px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--color-primary);
+}
+
+
+/* =========================
+   PORTADA
+========================= */
 
 .hero {
     min-height: 70vh;
@@ -48,8 +91,87 @@ header {
     line-height: 1.7;
 }
 
+
+/* =========================
+   PIE DE PÁGINA
+========================= */
+
 footer {
     padding: 24px;
     text-align: center;
     background-color: var(--color-secondary);
+}
+
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 800px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .nav-links {
+        gap: 18px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .nav-appointment {
+        margin-left: 0;
+    }
+
+
+
+}
+.hero-label {
+    color: var(--color-primary);
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+
+.hero-actions {
+    margin-top: 30px;
+}
+
+.btn-primary {
+    display: inline-block;
+    padding: 15px 32px;
+    background-color: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-text);
+    transform: translateY(-2px);
+}
+
+.hero-note {
+    margin-top: 20px;
+    font-size: 0.85rem;
+    color: var(--color-primary);
+}
+.nav-appointment {
+    background-color: var(--color-primary);
+    color: white;
+    text-decoration: none;
+    padding: 11px 22px;
+    border-radius: 30px;
+    font-size: 14px;
+    white-space: nowrap;
+    margin-left: 25px;
+    transition: all 0.3s ease;
+}
+
+.nav-appointment:hover {
+    background-color: var(--color-text);
+    transform: translateY(-2px);
 }
