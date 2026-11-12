@@ -1,0 +1,55 @@
+:root {
+    --color-background: #F8F6F0;
+    --color-primary: #748B78;
+    --color-text: #353B35;
+    --color-secondary: #DCE3D8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-background);
+    color: var(--color-text);
+    font-family: Arial, sans-serif;
+}
+
+header {
+    padding: 24px 8%;
+}
+
+.logo {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.hero {
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+footer {
+    padding: 24px;
+    text-align: center;
+    background-color: var(--color-secondary);
+}
