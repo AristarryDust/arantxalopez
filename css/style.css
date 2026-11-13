@@ -115,6 +115,14 @@ header {
     background-color: var(--color-text);
     transform: translateY(-2px);
 }
+.nav-links a {
+    transition: color 0.2s ease, font-weight 0.2s ease;
+}
+
+.nav-links a.active {
+    color: #000;
+    font-weight: 700;
+}
 
 /* =========================
    PORTADA
@@ -178,8 +186,7 @@ header {
    PREVIEWS Y TRANSICIONES
 ========================= */
 
-/* Versión inicial: contenido normal si
-   JavaScript no está disponible. */
+/* Contenido normal si JavaScript no está disponible */
 
 .preview-stage {
     padding: 80px 8%;
@@ -248,7 +255,7 @@ header {
     color: var(--color-text);
 }
 
-/* Activación del recorrido animado */
+/* Recorrido animado */
 
 .preview-stage.is-enhanced {
     height: 400svh;
@@ -273,14 +280,19 @@ header {
     justify-content: center;
     padding: 8% 12%;
     max-width: none;
+
     opacity: 0;
-    visibility: hidden;
+    visibility: visible;
     pointer-events: none;
+
     will-change: opacity, transform;
+    backface-visibility: hidden;
+    transform-origin: center center;
 }
 
+/* Solo la nota más cercana recibe interacciones */
+
 .preview-stage.is-enhanced .preview-card.is-active {
-    visibility: visible;
     pointer-events: auto;
 }
 
@@ -390,6 +402,36 @@ footer a:hover {
         font-size: 0.95rem;
     }
 }
+@media (max-width: 480px) {
+
+    .preview-stage.is-enhanced {
+        height: 500svh;
+    }
+    .preview-stage.is-enhanced .preview-pin {
+    height: 100svh;
+}
+
+.preview-stage.is-enhanced .preview-card {
+    padding: 12% 9%;
+}
+
+.preview-stage.is-enhanced .preview-card h2 {
+    font-size: clamp(1.7rem, 8vw, 2.2rem);
+    margin-bottom: 16px;
+}
+
+.preview-stage.is-enhanced .preview-card p {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    max-width: 100%;
+    margin-bottom: 18px;
+}
+
+.preview-stage.is-enhanced .preview-label {
+    margin-bottom: 16px;
+}
+
+}
 
 /* =========================
    ACCESIBILIDAD
@@ -422,4 +464,735 @@ footer a:hover {
         pointer-events: auto;
         padding: 35px 0;
     }
+}
+/* PRESENTACIÓN */
+
+.about-hero {
+    min-height: 65vh;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    align-items: center;
+    gap: 8%;
+    padding: 80px 12%;
+}
+
+.about-intro {
+    max-width: 650px;
+}
+
+.about-intro h1 {
+    font-size: clamp(2.2rem, 4vw, 3.5rem);
+    line-height: 1.2;
+    margin-bottom: 25px;
+}
+
+.about-intro p {
+    font-size: 1.05rem;
+    line-height: 1.8;
+    margin-bottom: 18px;
+}
+
+.about-image {
+    min-height: 420px;
+    background-color: var(--color-secondary);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ETIQUETAS DE SECCIÓN */
+
+.section-label {
+    display: block;
+    color: var(--color-primary);
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 25px;
+}
+
+
+.about-background,
+.about-education,
+.about-approach {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 100px 12%;
+    gap: 24px;
+}
+
+/* TÍTULOS */
+
+.about-background h2,
+.about-education h2,
+.about-approach h2 {
+    max-width: 850px;
+    font-size: clamp(2rem, 3.5vw, 2.8rem);
+    font-weight: normal;
+    line-height: 1.25;
+    margin-bottom: 12px;
+}
+
+/* RECORRIDO */
+
+.about-background-text {
+    width: 100%;
+    max-width: 850px;
+}
+
+/* FORMACIÓN */
+
+.education-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 850px;
+    gap: 28px;
+}
+
+.education-item {
+    width: 100%;
+}
+
+.education-item span {
+    display: block;
+    color: var(--color-primary);
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+}
+
+.education-item h3 {
+    font-size: 1.2rem;
+    font-weight: normal;
+    margin-bottom: 6px;
+}
+
+.education-item p {
+    line-height: 1.8;
+}
+
+/* ENFOQUE */
+
+.about-approach-text {
+    width: 100%;
+    max-width: 850px;
+}
+
+/* PÁRRAFOS */
+
+.about-background-text p,
+.about-approach-text p {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    margin-bottom: 24px;
+}
+
+/* CIERRE */
+
+.about-closing {
+    padding: 110px 20px;
+    text-align: center;
+}
+
+.about-closing h2 {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.about-closing p {
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
+
+.about-closing .btn-primary {
+    margin-top: 30px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 768px) {
+    .about-background,
+    .about-education,
+    .about-approach {
+        padding: 70px 8%;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .about-intro h1 {
+        font-size: 2.2rem;
+    }
+
+    .about-intro p,
+    .about-background-text p,
+    .about-approach p {
+        font-size: 0.95rem;
+    }
+
+    .about-image {
+        min-height: 260px;
+    }
+
+    .education-item {
+        padding: 23px 0;
+    }
+
+} 
+
+/* =================================
+   ARANCELES
+================================= */
+
+.rates-hero {
+    padding: 100px 8%;
+}
+
+.rates-intro {
+    max-width: 750px;
+}
+
+.rates-intro h1 {
+    margin: 20px 0;
+}
+
+.rates-intro p {
+    max-width: 620px;
+    line-height: 1.8;
+}
+
+.rates-section {
+    padding: 70px 8%;
+}
+
+.rates-section h2,
+.rates-includes h2 {
+    margin: 20px 0 40px;
+}
+
+.rates-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.rates-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.rates-table th,
+.rates-table td {
+    padding: 22px 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+}
+
+.rates-table th {
+    font-weight: 600;
+    opacity: 0.65;
+    font-size: 0.85rem;
+}
+
+.rates-category td {
+    padding-top: 35px;
+    padding-bottom: 15px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    border-bottom: none;
+}
+
+.rates-price {
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.rates-includes {
+    padding: 80px 8%;
+}
+
+.rates-includes p {
+    max-width: 750px;
+    line-height: 1.9;
+}
+
+.rates-closing {
+    padding: 90px 8%;
+    text-align: center;
+}
+
+.rates-closing p {
+    max-width: 600px;
+    margin: 20px auto 30px;
+    line-height: 1.8;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+
+    .rates-hero,
+    .rates-section,
+    .rates-includes,
+    .rates-closing {
+        padding: 55px 6%;
+    }
+
+    .rates-table {
+        min-width: 600px;
+    }
+
+    .rates-table th,
+    .rates-table td {
+        padding: 16px 12px;
+    }
+
+}
+/* =================================
+   SERVICIOS
+================================= */
+
+/* HERO */
+
+.services-hero {
+    padding: 110px 8%;
+}
+
+.services-intro {
+    max-width: 850px;
+}
+
+.services-intro h1 {
+    margin: 22px 0;
+    max-width: 800px;
+}
+
+.services-intro p {
+    max-width: 650px;
+    line-height: 1.9;
+}
+
+
+/* INTRODUCCIÓN */
+
+.services-overview {
+    padding: 70px 8%;
+    max-width: 1050px;
+}
+
+.services-overview h2 {
+    margin: 20px 0;
+    max-width: 700px;
+}
+
+.services-overview p {
+    max-width: 750px;
+    line-height: 1.9;
+}
+
+
+/* SECCIONES DE SERVICIOS */
+
+.service-detail {
+    padding: 90px 8%;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 35px;
+}
+
+.service-number {
+    font-size: 3rem;
+    font-weight: 300;
+    opacity: 0.35;
+}
+
+.service-content {
+    max-width: 800px;
+}
+
+.service-content h2 {
+    margin: 20px 0 30px;
+    max-width: 700px;
+}
+
+.service-content p {
+    line-height: 1.9;
+    margin-bottom: 20px;
+}
+
+
+/* CARACTERÍSTICAS */
+
+.service-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin: 35px 0;
+}
+
+.service-features div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9rem;
+}
+
+.service-features i {
+    width: 18px;
+    height: 18px;
+}
+
+
+/* ENLACES */
+
+.service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: gap 0.25s ease;
+}
+
+.service-link:hover {
+    gap: 16px;
+}
+
+.service-link i {
+    width: 17px;
+    height: 17px;
+}
+
+
+/* EVALUACIONES */
+
+.services-evaluations {
+    padding: 90px 8%;
+}
+
+.services-evaluations h2 {
+    max-width: 750px;
+    margin: 20px 0;
+}
+
+.evaluations-intro {
+    max-width: 750px;
+    line-height: 1.9;
+    margin-bottom: 45px;
+}
+
+
+/* TARJETAS DE EVALUACIÓN */
+
+.evaluation-card {
+    max-width: 900px;
+    padding: 35px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.evaluation-heading {
+    margin-bottom: 20px;
+}
+
+.evaluation-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    opacity: 0.65;
+}
+
+.evaluation-card h3 {
+    margin-top: 12px;
+    font-size: 1.5rem;
+}
+
+.evaluation-card p {
+    max-width: 780px;
+    line-height: 1.9;
+    margin-bottom: 18px;
+}
+
+
+/* INCLUYE */
+
+.evaluation-includes {
+    max-width: 900px;
+    margin-top: 40px;
+    padding: 35px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.evaluation-includes h3 {
+    margin: 18px 0;
+}
+
+.evaluation-includes p {
+    line-height: 1.9;
+}
+
+
+/* COMPLEMENTARIOS */
+
+.services-complementary {
+    padding: 90px 8%;
+}
+
+.services-complementary h2 {
+    max-width: 700px;
+    margin: 20px 0;
+}
+
+.services-complementary p {
+    max-width: 750px;
+    line-height: 1.9;
+    margin-bottom: 20px;
+}
+
+
+/* CIERRE */
+
+.services-closing {
+    padding: 100px 8%;
+    text-align: center;
+}
+
+.services-closing h2 {
+    max-width: 700px;
+    margin: 22px auto;
+}
+
+.services-closing p {
+    max-width: 650px;
+    margin: 20px auto 30px;
+    line-height: 1.9;
+}
+
+.services-closing-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+}
+
+.btn-secondary {
+    display: inline-block;
+    padding: 12px 25px;
+    text-decoration: none;
+    border: 1px solid currentColor;
+    border-radius: 4px;
+    transition: opacity 0.25s ease;
+}
+
+.btn-secondary:hover {
+    opacity: 0.7;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+
+    .services-hero,
+    .services-overview,
+    .service-detail,
+    .services-evaluations,
+    .services-complementary,
+    .services-closing {
+        padding: 55px 6%;
+    }
+
+    .service-detail {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .service-number {
+        font-size: 2rem;
+    }
+
+    .service-features {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .evaluation-includes {
+        padding: 25px;
+    }
+
+    .services-closing-actions {
+        flex-direction: column;
+    }
+
+}
+/* =================================
+   CONTACTO
+================================= */
+
+/* HERO */
+
+.contact-hero {
+    padding: 110px 8%;
+}
+
+.contact-intro {
+    max-width: 850px;
+}
+
+.contact-intro h1 {
+    max-width: 780px;
+    margin: 22px 0;
+}
+
+.contact-intro p {
+    max-width: 650px;
+    line-height: 1.9;
+}
+
+
+/* MEDIOS DE CONTACTO */
+
+.contact-methods {
+    padding: 80px 8%;
+}
+
+.contact-methods h2 {
+    margin: 20px 0 45px;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+
+/* TARJETAS */
+
+.contact-card {
+    padding: 35px 28px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: 330px;
+}
+
+.contact-icon {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+.contact-icon i {
+    width: 25px;
+    height: 25px;
+}
+
+.contact-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    opacity: 0.65;
+}
+
+.contact-card h3 {
+    font-size: 1.4rem;
+    margin: 12px 0;
+}
+
+.contact-card p {
+    line-height: 1.8;
+    margin-bottom: 25px;
+    flex-grow: 1;
+}
+
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: gap 0.25s ease;
+}
+
+.contact-link:hover {
+    gap: 15px;
+}
+
+.contact-link i {
+    width: 16px;
+    height: 16px;
+}
+
+
+/* INFORMACIÓN ADICIONAL */
+
+.contact-information {
+    padding: 85px 8%;
+    max-width: 1050px;
+}
+
+.contact-information h2 {
+    margin: 20px 0;
+    max-width: 700px;
+}
+
+.contact-information p {
+    max-width: 750px;
+    line-height: 1.9;
+}
+
+
+/* CIERRE */
+
+.contact-closing {
+    padding: 100px 8%;
+    text-align: center;
+}
+
+.contact-closing h2 {
+    margin-bottom: 20px;
+}
+
+.contact-closing p {
+    max-width: 600px;
+    margin: 0 auto 30px;
+    line-height: 1.9;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+    .contact-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .contact-hero,
+    .contact-methods,
+    .contact-information,
+    .contact-closing {
+        padding: 55px 6%;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-card {
+        min-height: auto;
+    }
+
 }

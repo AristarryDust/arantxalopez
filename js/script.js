@@ -1,4 +1,3 @@
-console.log("¡SCRIPT.JS ESTÁ CONECTADO!");
 document.addEventListener("DOMContentLoaded", () => {
 
     const stage = document.querySelector(".preview-stage");
@@ -9,6 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
         stage.querySelectorAll(".preview-card")
     );
 
+    if (cards.length === 0) return;
+
     const reducedMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)"
     );
@@ -17,7 +18,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let ticking = false;
 
-    // Activa el modo de transiciones.
     stage.classList.add("is-enhanced");
 
     function clamp(value, min, max) {
@@ -37,53 +37,77 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const viewportHeight = window.innerHeight;
 
-        // Cada unidad de progreso equivale a una pantalla.
-        const progress = clamp(
-            (window.scrollY - stageTop) / viewportHeight,
-            0,
-            cards.length - 1
-        );
+        // Una pantalla equivale a una unidad de progreso.
+        const stageHeight = stage.offsetHeight;
+
+const scrollDistance = Math.max(
+    stageHeight - viewportHeight,
+    1
+);
+
+const progress = clamp(
+    ((window.scrollY - stageTop) / scrollDistance) *
+    (cards.length - 1),
+    0,
+    cards.length - 1
+);
+
+        // Determina qué nota está más cerca del centro
+        // del recorrido.
+        const activeIndex = Math.round(progress);
 
         cards.forEach((card, index) => {
 
-            // Entrada y salida gradual de cada preview.
-            const enter = smoothStep(
-                (progress - (index - 0.45)) / 0.65
+            // Distancia entre la nota y el scroll actual.
+            const distance = Math.abs(progress - index);
+
+            // Fundido cruzado.
+            // Las notas vecinas se mezclan progresivamente.
+            const opacity = 1 - smoothStep(
+                distance / 1.15
             );
 
-            const leave = 1 - smoothStep(
-                (progress - (index + 0.35)) / 0.65
-            );
+            // Movimiento direccional y discreto.
+            const direction = progress - index;
 
-            const opacity = enter * leave;
-
-            // Pequeño desplazamiento durante la transición.
-            const movement = (1 - opacity) * 24;
+            const verticalMovement = direction < 0
+                ? Math.abs(direction) * 18
+                : -Math.min(direction, 1) * 14;
 
             const horizontalDirection =
-                card.classList.contains("preview-right") ? -1 : 1;
+                card.classList.contains("preview-right")
+                    ? -1
+                    : 1;
 
+            const horizontalMovement =
+                clamp(direction, -1, 1) *
+                10 *
+                horizontalDirection;
+
+            // Aplicar transformaciones.
             card.style.opacity = opacity;
 
             card.style.transform = `
                 translate3d(
-                    ${movement * horizontalDirection}px,
-                    ${movement}px,
+                    ${horizontalMovement}px,
+                    ${verticalMovement}px,
                     0
                 )
             `;
 
-            const isActive = opacity > 0.15;
+            // Accesibilidad e interacción.
+            const isActive = index === activeIndex;
 
-            card.classList.toggle("is-active", isActive);
+            card.classList.toggle(
+                "is-active",
+                isActive
+            );
 
             card.setAttribute(
                 "aria-hidden",
                 isActive ? "false" : "true"
             );
 
-            // Evita que los enlaces de previews ocultas
-            // reciban el foco del teclado.
             card.inert = !isActive;
 
         });
